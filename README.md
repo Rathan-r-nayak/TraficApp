@@ -7,3 +7,5 @@ Traffic App
 * Firebase
 
 
+## Description:
+Here a police can register a complaint if anyone breaks the traffic rule.
