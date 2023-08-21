@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1057150704610",
+    "project_id": "traffic-app-70e6e",
+    "storage_bucket": "traffic-app-70e6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057150704610:android:12d88fc1a9876f4b0937bb",
+        "android_client_info": {
+          "package_name": "com.example.trafficapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057150704610-kvkod3lsg49grth1qj8scsilnqa1ks5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trafficapp",
+            "certificate_hash": "4024cf92cba5cc31ef355bbfaeedbe4bb778d801"
+          }
+        },
+        {
+          "client_id": "1057150704610-j6dvp4tjcuvbqtup0i7sj7jtvogvfp18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzXVYoeSVLNsif-JensHMmW-lzdhIOVSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057150704610-j6dvp4tjcuvbqtup0i7sj7jtvogvfp18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
