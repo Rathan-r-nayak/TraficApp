@@ -17,4 +17,6 @@
     <string name="about_violation">About Violation</string>
     <string name="capture_image">Capture Image</string>
     <string name="submit">SUBMIT</string>
+    <string name="challans_list">Challans List</string>
+    <string name="police_list">Police List</string>
 </resources>

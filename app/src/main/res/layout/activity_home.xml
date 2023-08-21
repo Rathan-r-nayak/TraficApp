@@ -117,7 +117,7 @@
 
                 <Button
                     android:id="@+id/addUser"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingHorizontal="30dp"
@@ -135,17 +135,66 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/add_edit_city"
-                    app:srcCompat="@drawable/challan_img"/>
+                    android:id="@+id/make_challan"
+                    app:srcCompat="@drawable/make_challan"/>
 
                 <Button
                     android:id="@+id/makeChallan"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:paddingVertical="8dp"
                     android:paddingHorizontal="30dp"
                     android:layout_gravity="center"
                     android:text="@string/make_challan"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="25sp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/list_challan"
+                    app:srcCompat="@drawable/list_challan"/>
+
+                <Button
+                    android:id="@+id/listChallan"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="30dp"
+                    android:layout_gravity="center"
+                    android:text="@string/challans_list"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="25sp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/list_police"
+                    app:srcCompat="@drawable/list_police"/>
+
+                <Button
+                    android:id="@+id/listPolice"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="30dp"
+                    android:layout_gravity="center"
+                    android:text="@string/police_list"
                     android:textSize="12sp"
                     android:textStyle="bold"/>
             </LinearLayout>
