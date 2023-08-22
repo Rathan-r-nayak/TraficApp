@@ -1,5 +1,8 @@
 package com.example.trafficapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class police {
     String email,name,city,phone,department,district,stationId;
 
@@ -70,5 +73,11 @@ public class police {
 
     public String getStationId() {
         return stationId;
+    }
+
+    public List<police> getAllPoliceList()
+    {
+        List<police> policeList = new ArrayList<>();
+
     }
 }
