@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
     TextView username;
-    Button addUser,makeChallan;
+    Button addUser,makeChallan,listChallan,listPolice;
 
     public static final String EXTRA_MAIL="com.example.trafficapp.home.email";
     public static final String EXTRA_PASSWD="com.example.trafficapp.home.password";
@@ -25,6 +25,8 @@ public class HomeActivity extends AppCompatActivity {
         username=findViewById(R.id.username);
         addUser=findViewById(R.id.addUser);
         makeChallan=findViewById(R.id.makeChallan);
+        listChallan=findViewById(R.id.listChallan);
+        listPolice=findViewById(R.id.listPolice);
 
         String uname="Login As "+bundle.getString("com.example.trafficapp.extra.email");
         username.setText(uname);
@@ -47,6 +49,32 @@ public class HomeActivity extends AppCompatActivity {
                 b.putString(EXTRA_MAIL,bundle.getString(EXTRA_MAIL));
                 b.putString(EXTRA_PASSWD,bundle.getString(EXTRA_PASSWD));
                 intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+
+        listChallan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeActivity.this,ListChallanActivity.class);
+//                Bundle b=new Bundle();
+//                b.putString(EXTRA_MAIL,bundle.getString(EXTRA_MAIL));
+//                b.putString(EXTRA_PASSWD,bundle.getString(EXTRA_PASSWD));
+//                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+
+        listPolice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(HomeActivity.this,ListPoliceActivity.class);
+//                Bundle b=new Bundle();
+//                b.putString(EXTRA_MAIL,bundle.getString(EXTRA_MAIL));
+//                b.putString(EXTRA_PASSWD,bundle.getString(EXTRA_PASSWD));
+//                intent.putExtras(b);
                 startActivity(intent);
             }
         });
