@@ -42,11 +42,11 @@ import javax.mail.internet.MimeMessage;
 
 
 public class MakeChallanActivity extends AppCompatActivity {
-    private static final String EMAIL_HOST = "smtp.gmail.com"; // Replace with your email host
-    private static final int EMAIL_PORT = 587; // Replace with your email port
+    private static final String HOST = "smtp.gmail.com"; // Replace with your email host
+    private static final int PORT = 587; // Replace with your email port
 
-    private static final String EMAIL_USERNAME = ""; // Replace with your email address
-    private static final String EMAIL_PASSWORD = ""; // Replace with your email password
+    private static final String EMAIL_SENDER = "trafficsquad76@gmail.com"; // Replace with your email address
+    private static final String EMAIL_PASSWORD = "ldhnqgzhrigeynsb"; // Replace with your email password
 
 
     private DatabaseReference databaseRef;
@@ -110,7 +110,8 @@ public class MakeChallanActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseRef = FirebaseDatabase.getInstance().getReference();
+                db=FirebaseDatabase.getInstance();
+                databaseRef =db.getReference("complaint");
 
                 String fname = firstname.getText().toString();
                 String lname = lastname.getText().toString();
@@ -127,45 +128,18 @@ public class MakeChallanActivity extends AppCompatActivity {
                 String pem = bundle.getString("com.example.trafficapp.home.email");
 
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                capturedImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] imageData = baos.toByteArray();
+                ByteArrayOutputStream baops = new ByteArrayOutputStream();
+                capturedImage.compress(Bitmap.CompressFormat.PNG, 100, baops);
+                byte[] imageData = baops.toByteArray();
                 String base64Image = Base64.encodeToString(imageData, Base64.DEFAULT);
-
-
-//                FirebaseDatabase database = FirebaseDatabase.getInstance();
-//                DatabaseReference imagesRef = database.getReference("complaint/user");
-//
-//                String imageKey = imagesRef.push().getKey(); // Generate a unique key for the image
-//                imagesRef.child(imageKey).setValue(base64Image)
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                // Image stored successfully in the database
-//                                Toast.makeText(MakeChallanActivity.this, "success", Toast.LENGTH_SHORT).show();
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                // Failed to store the image in the database
-//                                Toast.makeText(MakeChallanActivity.this, "exception", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-
-
                 Date currentDate = new Date();
 
 
                 complaint ob = new complaint(fname, lname, phone, plate, rc, dl, typev, violate, base64Image, em, pem, currentDate, fin);
-//                ob.uploadImage(capturedImage);
-//                userData.setName("John Doe");
-//                userData.setAge(30);
-
-//                databaseRef.child("images").child("imageKey").setValue(base64Image);
 
 
-                databaseRef.child("complaint").child("user").setValue(ob)
+
+                databaseRef.child(fname).setValue(ob)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -203,41 +177,37 @@ public class MakeChallanActivity extends AppCompatActivity {
                         });
             }
         });
-
-
     }
 
-    public static void sendEmail(String recipientEmail, String subject, String message) {
+    public static void sendEmail(String recipientEmail, String subject, String msg) {
         // Set up properties for the mail server
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com"); // Gmail SMTP server
-        properties.put("mail.smtp.port", "587"); // Port for TLS on STARTTLS
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", HOST);
+        props.put("mail.smtp.port", PORT);
 
-        // Create a session with authentication
-        Session session = Session.getInstance(properties, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(EMAIL_USERNAME, EMAIL_PASSWORD);
-            }
-        });
+
+
+        Session session = Session.getInstance(props,
+                new Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(EMAIL_SENDER, EMAIL_PASSWORD);
+                    }
+                });
 
         try {
-            // Create a MimeMessage object
-            MimeMessage mimeMessage = new MimeMessage(session);
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(EMAIL_SENDER));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+            message.setSubject(subject);
+            message.setText(msg);
 
-            // Set the sender and recipient addresses
-            mimeMessage.setFrom(new InternetAddress(EMAIL_USERNAME));
-            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+            Transport.send(message);
 
-            // Set the subject and actual message
-            mimeMessage.setSubject(subject);
-            mimeMessage.setText(message);
-
-            // Send the email
-            Transport.send(mimeMessage);
+            // Email sent successfully
         } catch (MessagingException e) {
-            e.printStackTrace();
+            // Email sending failed
         }
     }
 }

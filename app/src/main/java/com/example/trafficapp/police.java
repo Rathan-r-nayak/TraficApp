@@ -1,8 +1,5 @@
 package com.example.trafficapp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class police {
     String email,name,city,phone,department,district,stationId;
 
@@ -75,9 +72,4 @@ public class police {
         return stationId;
     }
 
-    public List<police> getAllPoliceList()
-    {
-        List<police> policeList = new ArrayList<>();
-
-    }
 }

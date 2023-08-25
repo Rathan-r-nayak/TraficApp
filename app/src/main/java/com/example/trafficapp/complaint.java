@@ -16,7 +16,7 @@ public class complaint {
         this.dlNo = dlNo;
         this.typeVehicle = typeVehicle;
         this.violation = violation;
-        Image = image;
+        this.Image = image;
         this.email = email;
         this.policeEmail = policeEmail;
         this.date = date;

@@ -1,8 +1,5 @@
 package com.example.trafficapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterUserActivity extends AppCompatActivity {
     private DatabaseReference databaseRef;
+    FirebaseDatabase db;
 
     EditText email,passwd,name,city,phone,district,department,stationid;
     Button register;
@@ -56,7 +57,8 @@ public class RegisterUserActivity extends AppCompatActivity {
                 String dept=department.getText().toString();
                 String dist=district.getText().toString();
                 String sid=stationid.getText().toString();
-                databaseRef = FirebaseDatabase.getInstance().getReference();
+                db = FirebaseDatabase.getInstance();
+                databaseRef=db.getReference("police");
 
                 if(TextUtils.isEmpty(em) && TextUtils.isEmpty(pass))
                 {
@@ -71,7 +73,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                             {
                                 police p1= new police(em,nam,cit,phn,dept,dist,sid);
 
-                                databaseRef.child("police").child("user").setValue(p1)
+                                databaseRef.child(nam).setValue(p1)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:background="#2C000000">
+
+        <ImageView
+            android:id="@+id/img_challan"
+            android:layout_width="125dp"
+            android:layout_height="133dp"
+            app:srcCompat="@drawable/capture_image"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <TextView
+            android:id="@+id/name_challan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="113dp"
+            android:layout_marginEnd="113dp"
+            android:layout_marginBottom="8dp"
+            android:text="name"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/email_challan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_challan" />
+
+        <TextView
+            android:id="@+id/email_challan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="113dp"
+            android:layout_marginEnd="113dp"
+            android:layout_marginBottom="88dp"
+            android:text="email"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_challan" />
+
+        <TextView
+            android:id="@+id/num_plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="76dp"
+            android:text="num plate"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/type_vehicle_challan"
+            app:layout_constraintEnd_toStartOf="@+id/violation_challan"
+            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintStart_toEndOf="@+id/img_challan"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.266" />
+
+        <TextView
+            android:id="@+id/type_vehicle_challan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="24dp"
+            android:text="type vehicle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fine_challan"
+            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toEndOf="@+id/img_challan" />
+
+        <TextView
+            android:id="@+id/fine_challan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="24dp"
+            android:text="fine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/violation_challan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="56dp"
+            android:text="violation"
+            app:layout_constraintBottom_toTopOf="@+id/fine_challan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.388" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
